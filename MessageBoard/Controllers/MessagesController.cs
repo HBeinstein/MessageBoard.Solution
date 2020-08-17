@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
@@ -18,9 +19,21 @@ namespace MessageBoard.Controllers
 
     // GET api/messages
     [HttpGet]
-    public ActionResult<IEnumerable<Message>> Get()
+    public ActionResult<IEnumerable<Message>> Get(string user, DateTime? date)
     {
-      return _db.Messages.ToList();
+      var query = _db.Messages.AsQueryable();
+
+      if (user != null)
+      {
+        query = query.Where(entry => entry.UserName == user);
+      }
+
+      if (date != null)
+      {
+        query = query.Where(entry => entry.Date == date);
+      }
+
+      return query.ToList();
     }
 
     // POST api/messages
