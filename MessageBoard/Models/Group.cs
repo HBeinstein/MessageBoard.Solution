@@ -4,18 +4,14 @@ using System.Collections.Generic;
 
 namespace MessageBoard.Models
 {
-  // [JsonObject(IsReference = true)]
   public class Group
   {
     public Group()
     {
-      this.Messages = new HashSet<GroupMessage>();
+      this.Messages = new HashSet<Message>();
     }
     public int GroupId { get; set; }
     public string Name { get; set; }
-
-    // [JsonIgnore]
-    // [IgnoreDataMember]
-    public ICollection<GroupMessage> Messages { get; set; }
+    public virtual ICollection<Message> Messages { get; set; }
   }
 }

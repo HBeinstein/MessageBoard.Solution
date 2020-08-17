@@ -3,14 +3,16 @@ using System;
 using MessageBoard.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MessageBoard.Solution.Migrations
 {
     [DbContext(typeof(MessageBoardContext))]
-    partial class MessageBoardContextModelSnapshot : ModelSnapshot
+    [Migration("20200817224000_OneToMany2")]
+    partial class OneToMany2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -117,7 +119,7 @@ namespace MessageBoard.Solution.Migrations
 
             modelBuilder.Entity("MessageBoard.Models.Message", b =>
                 {
-                    b.HasOne("MessageBoard.Models.Group")
+                    b.HasOne("MessageBoard.Models.Group", "Group")
                         .WithMany("Messages")
                         .HasForeignKey("GroupId")
                         .OnDelete(DeleteBehavior.Cascade);
