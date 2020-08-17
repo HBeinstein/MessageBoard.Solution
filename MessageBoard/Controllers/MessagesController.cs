@@ -19,7 +19,7 @@ namespace MessageBoard.Controllers
 
     // GET api/messages
     [HttpGet]
-    public ActionResult<IEnumerable<Message>> Get(string user, DateTime? date)
+    public ActionResult<IEnumerable<Message>> Get(string user, DateTime? startDate, DateTime? endDate)
     {
       var query = _db.Messages.AsQueryable();
 
@@ -28,10 +28,14 @@ namespace MessageBoard.Controllers
         query = query.Where(entry => entry.UserName == user);
       }
 
-      if (date != null)
+      if (startDate != null && endDate != null)
       {
-        query = query.Where(entry => entry.Date == date);
-      }
+        query = query.Where(entry => entry.Date >= startDate && entry.Date <= endDate);
+      } 
+      else if (startDate != null && endDate == null)
+      {
+        query = query.Where(entry => entry.Date == startDate);
+      } 
 
       return query.ToList();
     }
