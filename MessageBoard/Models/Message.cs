@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace MessageBoard.Models
 {
+  // [JsonObject(IsReference = true)]
   public class Message
   {
     public Message()
@@ -15,6 +16,8 @@ namespace MessageBoard.Models
     public DateTime Date { get; set; }
     public string UserName { get; set; }
 
+    // [JsonIgnore]
+    // [IgnoreDataMember]
     public ICollection<GroupMessage> Groups { get; set; }
   }
 }

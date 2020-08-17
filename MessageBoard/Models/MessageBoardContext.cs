@@ -24,6 +24,22 @@ namespace MessageBoard.Models
           new Message { MessageId = 4, Title = "If this was a real alert", Body = "You would be dead. Probably, who knows. If you saw a flash, most likely.", Date = DateTime.Today, UserName = "Test4"},
           new Message { MessageId = 5, Title = "My Second Message", Body = "I couldn't stay away", Date = new DateTime(2020, 08, 18), UserName = "Test2"}
         );
+
+        builder.Entity<Group>()
+        .HasData(
+          new Group { GroupId = 1, Name = "The Mod Squad" },
+          new Group { GroupId = 2, Name = "Mighty Morphin Power Rangers" },
+          new Group { GroupId = 3, Name = "Blink 182" }
+        );
+
+        builder.Entity<GroupMessage>()
+        .HasData(
+          new GroupMessage { GroupMessageId = 1, GroupId = 1, MessageId = 1 },
+          new GroupMessage { GroupMessageId = 2, GroupId = 1, MessageId = 2 },
+          new GroupMessage { GroupMessageId = 3, GroupId = 2, MessageId = 3 },
+          new GroupMessage { GroupMessageId = 4, GroupId = 3, MessageId = 4 },
+          new GroupMessage { GroupMessageId = 5, GroupId = 3, MessageId = 5 }
+        );
       }
   }
 }

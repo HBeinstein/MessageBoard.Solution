@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 namespace MessageBoard.Models
 {
+  // [JsonObject(IsReference = true)]
   public class Group
   {
     public Group()
@@ -13,6 +14,8 @@ namespace MessageBoard.Models
     public int GroupId { get; set; }
     public string Name { get; set; }
 
+    // [JsonIgnore]
+    // [IgnoreDataMember]
     public ICollection<GroupMessage> Messages { get; set; }
   }
 }

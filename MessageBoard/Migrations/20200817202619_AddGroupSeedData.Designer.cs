@@ -3,14 +3,16 @@ using System;
 using MessageBoard.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MessageBoard.Solution.Migrations
 {
     [DbContext(typeof(MessageBoardContext))]
-    partial class MessageBoardContextModelSnapshot : ModelSnapshot
+    [Migration("20200817202619_AddGroupSeedData")]
+    partial class AddGroupSeedData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -62,38 +64,6 @@ namespace MessageBoard.Solution.Migrations
                     b.HasIndex("MessageId");
 
                     b.ToTable("GroupMessages");
-
-                    b.HasData(
-                        new
-                        {
-                            GroupMessageId = 1,
-                            GroupId = 1,
-                            MessageId = 1
-                        },
-                        new
-                        {
-                            GroupMessageId = 2,
-                            GroupId = 1,
-                            MessageId = 2
-                        },
-                        new
-                        {
-                            GroupMessageId = 3,
-                            GroupId = 2,
-                            MessageId = 3
-                        },
-                        new
-                        {
-                            GroupMessageId = 4,
-                            GroupId = 3,
-                            MessageId = 4
-                        },
-                        new
-                        {
-                            GroupMessageId = 5,
-                            GroupId = 3,
-                            MessageId = 5
-                        });
                 });
 
             modelBuilder.Entity("MessageBoard.Models.Message", b =>
