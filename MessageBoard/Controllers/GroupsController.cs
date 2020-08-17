@@ -5,7 +5,7 @@ using MessageBoard.Models;
 
 namespace MessageBoard.Controllers
 {
-  [Route("api/[controller")]
+  [Route("api/[controller]")]
   [ApiController]
   public class GroupsController : ControllerBase
   {
