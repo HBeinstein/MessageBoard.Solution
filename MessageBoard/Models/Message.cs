@@ -4,7 +4,6 @@ using Newtonsoft.Json;
 
 namespace MessageBoard.Models
 {
-  [JsonObject(IsReference = true)]
   public class Message
   {
     public int MessageId { get; set; }
