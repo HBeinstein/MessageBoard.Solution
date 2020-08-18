@@ -6,9 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MessageBoard.Solution.Controllers
 {
+    [ApiVersion("1.0")]
     [Route("api/[controller]")]
     [ApiController]
-    public class ValuesController : ControllerBase
+    public class ValuesV1Controller : ControllerBase
     {
         // GET api/values
         [HttpGet]
@@ -40,6 +41,18 @@ namespace MessageBoard.Solution.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+        }
+    }
+    [ApiVersion("2.0")]
+    [Route("api/[controller]")]
+    [ApiController]
+    public class ValuesV2Controller : ControllerBase
+    {
+        // GET api/messages
+        [HttpGet]
+        public ActionResult<IEnumerable<string>> Get()
+        {
+            return new string[] { "value1", "value2" };
         }
     }
 }
